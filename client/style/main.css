@@ -8,32 +8,59 @@ body {
     --light-text-color: rgb(107, 107, 107);
 }
 
-/* Describes the styling of the one and only emenent with id="mainheader", note the # in front of mainheader */
+/* Describes the styling of the one and only element with id="mainheader", note the # in front of mainheader */
 #mainheader {
     background-color: var(--primary-color);
     font-size: 3rem;
     color: white;
+    position: -webkit-sticky;
+    position: sticky;
+    width: 100%;
+    top: 0rem;
 }
 
 #logo-header {
     display: flex;
     justify-content: flex-start;
-    align-items: center;
+    width: 100%;
 }
 
 #logo-header img {
-    margin-left: 30px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 main {
     padding: 25px;
 }
 
+a:link, a:visited {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0rem 1rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
+  }
+  
+  a:hover, a:active {
+    color: var(--primary-color);
+    background-color: white;
+    font-weight: bold;
+  }
+
 nav
 {
     height: 2rem;
     line-height: 2rem;
+    text-align: center;
     background-color: var(--accent-color);
+    position: -webkit-sticky;
+    position: sticky;
+    width: 100%;
+    top: 3.4rem;
 }
 
 /* Describes the styling of all elements with class="parkname", note the . in front of parkname */
@@ -42,7 +69,6 @@ nav
     color: white;
     font-size: 2rem;
     font-weight: bold;
-    text-transform: uppercase;
 }
 
 /* Describes the styling of all <article> elements */
@@ -53,14 +79,22 @@ article {
 }
 
 .order {
-    padding-top: 25px;
+    padding-top: 15px;
+    margin-left: 1rem;
 }
 
 .badge {
-    background-color: red;
-    display: none;
+    background-color: var(--primary-color);
+    display: inline;
     color: white;
     font-weight: bold;
-    width: 25px;
-    border-radius: 25px;
+    width: 1rem;
+    border-radius: 1rem;
+}
+
+.orderbutton {
+    background-color: var(--primary-color);
+    color: white;
+    margin: 1rem;
+    height: 1.5rem;
 }
