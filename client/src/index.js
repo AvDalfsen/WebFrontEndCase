@@ -8,7 +8,7 @@ function orderButtonClicked(event) {
 setNumberOfOrders()
 
 function saveOrderInShoppingBasket(nameOfPark, noOfAdults, noOfChildren) {
-    let orderDataJSON = '{"parkName":'+nameOfPark+',"numberOfAdults":'+noOfAdults+',"numberOfChildren":'+noOfChildren+'}'
+    let orderDataJSON = JSON.stringify({ nameOfPark, noOfAdults, noOfChildren })
     let counter = countOrders()
     localStorage.setItem("order"+counter, orderDataJSON)
 
