@@ -8,6 +8,7 @@ function orderButtonClicked(event) {
 function saveOrderInShoppingBasket(nameOfPark, noOfAdults, noOfChildren) {
     let orderDataJSON = JSON.stringify({ nameOfPark, noOfAdults, noOfChildren })
     let counter = countOrders()
+    checkTicketAvailability(noOfAdults, noOfChildren)
     localStorage.setItem("order"+counter, orderDataJSON)
     setNumberOfOrders()
 }
@@ -53,6 +54,12 @@ function buildHTML(data, article) {
     article.children[2].children[0].children[2].children[1].innerHTML += data[keys[4]];
     article.children[2].children[0].children[2].children[2].innerHTML += data[keys[5]];
     article.children[2].children[0].children[2].children[3].innerHTML += data[keys[6]];
+}
+
+async function checkTicketAvailability(noOfAdults, noOfChildren) {
+    let data = await fetchAsync()
+    let totalRequestedTickets = noOfAdults + noOfChildren
+    console.log(data)    
 }
 
 setNumberOfOrders()

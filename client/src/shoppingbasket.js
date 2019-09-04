@@ -24,6 +24,28 @@ function paymentButtonClicked() {
     if(listOfOrders.length != 0){
         localStorage.clear()
         window.location.href = "orderplaced.html"
+        postOrder(collectOrders())
         listOfOrders = []
     }
+}
+
+function collectOrders() {
+    var collectedOrders = {}
+    for (let i = 0; i < listOfOrders.length; i++){
+        collectedOrders['order'+i] = listOfOrders[i]
+    }
+    return collectedOrders
+}
+
+async function postOrder(collectedOrders) {
+    const rawResponse = await fetch('api/placeorder', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({collectedOrders})
+    })
+    const content = await rawResponse.json()        
+    console.log(content)
 }
