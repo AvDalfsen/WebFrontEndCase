@@ -105,13 +105,6 @@ const attractions = [
     }, 
 ]
 
-let ticketAvailability = []
-for(let i = 0; i < attractions.length; i++) {
-    ticketAvailability.push(JSON.parse(attractions[i]["available"]))
-}
-
-console.log(ticketAvailability)
-
 /**
  * A route is like a method call. It has a name, some parameters and some return values.
  * 
@@ -134,7 +127,6 @@ app.get("/api/attractions", function (request, response) {
 app.post("/api/placeorder", function (request, response) {
     console.log("Api call received for /placeorder");
     console.log(request.body);
-    console.log("hallo");
     /**
      * Send the status code 200 back to the clients browser.
      * This means OK.
@@ -153,7 +145,6 @@ app.get("/api/admin/edit", function (request, response) {
 
     response.sendStatus(200);
 });
-
 
 /**
  * Make our webserver available on port 8000.
