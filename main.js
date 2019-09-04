@@ -34,7 +34,7 @@ const attractions = [
 
     { 
         name: "Madurodam",
-        description: "The Netherlands smallest theme park.",
+        description: "The Netherlands' smallest theme park.",
         adultPrice: 25,
         kidsPrice: 20,
         minimumNumberOfAdults: 1,
@@ -106,7 +106,7 @@ const attractions = [
 ]
 
 /**
- * A route is like a method call. It has a name, some parameters and some return value.
+ * A route is like a method call. It has a name, some parameters and some return values.
  * 
  * Name: /api/attractions
  * Parameters: the request as made by the browser

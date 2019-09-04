@@ -41,7 +41,7 @@
             </a>
         </nav>
 
-        <main>
+        <!-- <main>
 
             <article>
                 <div class="parkname">De Efteling</div>
@@ -190,7 +190,33 @@
                 </div>
             </article>
 
-        </main>
+        </main> -->
+
+        
+        <template id="attractionTemplate">
+            <article>
+                <div class="parkname"></div>
+                <div class="parkdescription"></div>
+                <div class="order">
+                    <div class="prices">
+                    <div class="adultprice">Adults: <span class="sign">&euro;</span><span class="price"></span></div>
+                    <div class="kidsprice">Kids: <span class="sign">&euro;</span><span class="price"></span></div>
+                    <div class="discountrequirement">
+                        <em>Family ticket:</em>
+                        Buy <span class="adults"></span> adult tickets & <span class="child"></span> kid tickets for a <span class="percentage"></span>% discount!
+                        </div>
+                    </div>
+                    <label>Adults: </label><input placeholder="adults" type="number" class="numberofadults" min = 0/>
+                    <label>Kids: </label><input placeholder="kids" type="number" class="numberofkids" min = 0/>
+                    <div class="total"><span class="sign">&euro;</span><span class="price">0,-</span></div>
+                    <button class="orderbutton">Add to shopping basket</button>
+                </div>
+            </article>
+        </template>
+
+        <div id="templateClones">
+
+        </div>
 
         <script src="src/index.js"></script>
     </body>
