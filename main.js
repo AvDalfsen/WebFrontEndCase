@@ -126,13 +126,32 @@ app.get("/api/attractions", function (request, response) {
 
 app.post("/api/placeorder", function (request, response) {
     console.log("Api call received for /placeorder");
-    console.log(request.body);
     /**
      * Send the status code 200 back to the clients browser.
      * This means OK.
      */
     response.sendStatus(200);
+    postToArray(request.body)
 });
+
+function postToArray(body) {
+    orders = []
+    for(let i = 0; i < Object.keys(body).length; i++){
+        orders.push(body["order"+i])
+    }
+    console.log(orders)
+    updateTicketAvailability(orders)
+}
+
+function updateTicketAvailability(orders) {
+    for(let i = 0; i < orders.length; i++){
+        for(let j = 0; j < attractions.length; j++){
+            if(orders[i]["nameOfPark"] == attractions[j]["name"]){
+                attractions[j]["available"] -= (orders[i]["noOfAdults"] + orders[i]["noOfChildren"])
+            }
+        }
+    } 
+}
 
 app.get("/api/myorders", function (request, response) {
     console.log("Api call received for /myorders");

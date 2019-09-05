@@ -37,15 +37,18 @@ function collectOrders() {
     return collectedOrders
 }
 
-async function postOrder(collectedOrders) {
-    const rawResponse = await fetch('api/placeorder', {
-        method: 'POST',
+async function postOrder() {
+    var orders = {};
+    for(let i = 0; i<listOfOrders.length; i++){
+        orders["order"+i] = listOfOrders[i];
+    }
+    await fetch("api/placeorder",
+    {
         headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
         },
-        body: JSON.stringify({collectedOrders})
-    })
-    const content = await rawResponse.json()        
-    console.log(content)
+        method: "POST",
+        body: JSON.stringify(orders)
+    });
 }
