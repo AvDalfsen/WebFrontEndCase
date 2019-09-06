@@ -5,13 +5,14 @@ function orderButtonClicked(event) {
     let nameOfPark = event.target.parentNode.parentNode.getElementsByClassName("parkname")[0].innerText
     let noOfAdults = parseInt(event.target.parentNode.getElementsByClassName("numberofadults")[0].value)
     let noOfChildren = parseInt(event.target.parentNode.getElementsByClassName("numberofkids")[0].value)
+    let orderCost = parseInt(event.target.parentNode.getElementsByClassName("price")[2].innerHTML)
     if(!noOfAdults > 0 || noOfAdults < 0) noOfAdults = 0
     if(!noOfChildren > 0 || noOfChildren < 0) noOfChildren = 0
-    if(noOfAdults != 0 || noOfChildren != 0) saveOrderInShoppingBasket(nameOfPark, noOfAdults, noOfChildren)
+    if(noOfAdults != 0 || noOfChildren != 0) saveOrderInShoppingBasket(nameOfPark, noOfAdults, noOfChildren, orderCost)
 }
 
-function saveOrderInShoppingBasket(nameOfPark, noOfAdults, noOfChildren) {
-    let orderDataJSON = JSON.stringify({nameOfPark, noOfAdults, noOfChildren})
+function saveOrderInShoppingBasket(nameOfPark, noOfAdults, noOfChildren, orderCost) {
+    let orderDataJSON = JSON.stringify({nameOfPark, noOfAdults, noOfChildren, orderCost})
     let counter = countOrders()
     if (checkTicketAvailability(noOfAdults, noOfChildren) == true){
         event.target.parentNode.parentNode.children[2].innerHTML -= (noOfAdults + noOfChildren)
@@ -83,7 +84,7 @@ function getTotal()
     var totalPrice = 0
     if(checkDiscount() == true) totalPrice = ((getAdultPrice() + getChildPrice()) * getDiscount())
     else totalPrice = getAdultPrice() + getChildPrice()
-    event.target.parentNode.children[5].children[1].innerHTML = totalPrice + ",-";
+    event.target.parentNode.children[5].children[1].innerHTML = totalPrice;
 }
 
 function getAdultPrice() {
@@ -112,7 +113,6 @@ function checkDiscount() {
     if(!noOfChildren > 0) noOfChildren = 0
     let minNoOfAdults = parseInt(event.target.parentNode.children[0].children[2].children[1].innerHTML) 
     let minNoOfChildren = parseInt(event.target.parentNode.children[0].children[2].children[2].innerHTML)
-    console.log(noOfAdults, minNoOfAdults, noOfChildren, minNoOfChildren)
     if(noOfAdults == minNoOfAdults && noOfChildren == minNoOfChildren) return true
     return false
 }

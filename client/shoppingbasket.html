@@ -41,21 +41,24 @@
             </a>
         </nav>
 
-        <main>
-            <button id="finalizepaymentbutton">Pay now</button>
-        </main>
-
+      
         <template id="ticket">
             <article>
                 <div>Parkname: </div>
                 <div>Adults: </div>
                 <div>Kids: </div>
+                <span>Order cost: &euro;</span>,-
                 <button>Cancel order</button>
             </article>
         </template>
-        <div id="templateClones">
+        <div id="templateClones"></div>
 
-        </div>
+        <p></p>
+        The total cost of your orders is: &euro;<span id="totalcost"> </span>,-
+        <main>
+            <button id="finalizepaymentbutton">Pay now</button>
+        </main>
+
 
         <script src="src/shoppingbasket.js"></script>
     </body>
