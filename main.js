@@ -1,3 +1,17 @@
+var mysql = require('mysql2');
+
+var connection = mysql.createConnection({
+  host: "localhost",
+  user: "henk",
+  password: "henk",
+  database: "mydb"
+});
+
+connection.connect(function(err) {
+    if (err) throw err;
+    console.log("Connected!");
+});
+
 /**
  * Server side code using the express framework running on a Node.js server.
  * 
@@ -135,7 +149,7 @@ app.post("/api/placeorder", function (request, response) {
 });
 
 function postToArray(body) {
-    orders = []
+    orders = [] 
     for(let i = 0; i < Object.keys(body).length; i++){
         orders.push(body["order"+i])
     }
