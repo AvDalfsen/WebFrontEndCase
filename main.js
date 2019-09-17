@@ -12,6 +12,13 @@ connection.connect(function(err) {
     console.log("Connected!");
 });
 
+let henk = "";
+connection.query("SELECT event_name FROM events WHERE event_id = 3", function(err, result) {
+    if (err) throw err;
+    let henk = result[0]['event_name']
+    console.log(henk) 
+}, console.log(henk))
+
 /**
  * Server side code using the express framework running on a Node.js server.
  * 
@@ -33,6 +40,7 @@ app.use(express.json());
 /**
  * Our code starts here.
  */
+console.log(henk)
 const attractions = [
     { 
         name: "De Efteling",
@@ -59,7 +67,7 @@ const attractions = [
     },
 
     { 
-        name: "Toverland",
+        name: 'Toverland',
         description: "Experience magic and wonder.",
         adultPrice: 30,
         kidsPrice: 30,
@@ -184,3 +192,8 @@ app.get("/api/admin/edit", function (request, response) {
  * Visit localhost:8000 in any browser to see your site!
  */
 app.listen(8000, () => console.log('Example app listening on port 8000!'));
+
+connection.end(function(err) {
+    if (err) throw err;
+    console.log("Connected!");
+});
